@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor='let menuItem of menu'>
+    <a (mouseenter)="handleMouseEnter($event)" (mouseleave)="handleMouseLeave($event)" href="{{menuItem.URL}}" target="_blank"><h1>{{menuItem.Name}}</h1></a>    
+  </li>
+</ul>
+
