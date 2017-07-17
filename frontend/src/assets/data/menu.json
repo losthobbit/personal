@@ -1,18 +1,25 @@
-[
-    {
-        "Name": "Blog",
-        "URL": "http://stephenrandom.blogspot.com"
-    },
-    {
-        "Name": "YouTube",
-        "URL": "http://youtube.com/soberauer"
-    },
-    {
-        "Name": "Books",
-        "URL": "https://www.amazon.co.uk/Stephen-Oberauer/e/B004B9EGXI"
-    },
-    {
-        "Name": "Democratic Intelligence",
-        "URL": "https://democraticintelligence.org"
-    }
-]
+{
+    "items":
+    [
+        {
+            "name": "Blog",
+            "url": "http://stephenrandom.blogspot.com",
+            "image": "Blog.jpg"
+        },
+        {
+            "name": "YouTube",
+            "url": "http://youtube.com/soberauer",
+            "image": "YouTube.jpg"
+        },
+        {
+            "name": "Books",
+            "url": "https://www.amazon.co.uk/Stephen-Oberauer/e/B004B9EGXI",
+            "image": "Books.jpg"
+        },
+        {
+            "name": "Democratic Intelligence",
+            "url": "https://democraticintelligence.org",
+            "image": "DemocraticIntelligence.jpg"
+        }
+    ]
+}
