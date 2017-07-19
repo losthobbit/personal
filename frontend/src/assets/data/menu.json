@@ -2,9 +2,23 @@
     "items":
     [
         {
-            "name": "Blog",
+            "name": "Blogs",
             "url": "http://stephenrandom.blogspot.com",
-            "image": "Blog.jpg"
+            "image": "Blog.jpg",
+            "subMenu" : [
+                {
+                    "name": "Random Ramblings",
+                    "url": "http://stephenrandom.blogspot.com"
+                },
+                {
+                    "name": "Master of Programming",
+                    "url": "http://masterofprogramming.blogspot.co.uk/"
+                },
+                {
+                    "name": "3D Travel Videos",
+                    "url": "https://3dtravelvideos.blogspot.co.uk/"
+                }
+            ]
         },
         {
             "name": "YouTube",
@@ -17,9 +31,15 @@
             "image": "Books.jpg"
         },
         {
-            "name": "Democratic Intelligence",
+            "name": "Projects",
             "url": "https://democraticintelligence.org",
-            "image": "DemocraticIntelligence.jpg"
+            "image": "DemocraticIntelligence.jpg",
+            "subMenu": [
+                {
+                    "name": "Democratic Intelligence",
+                    "url": "https://democraticintelligence.org"                    
+                }
+            ]
         }
     ]
 }

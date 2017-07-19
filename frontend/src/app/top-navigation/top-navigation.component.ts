@@ -33,8 +33,10 @@ export class TopNavigationComponent implements OnInit {
   
   preloadedImages:HTMLImageElement[] = [];
   menuItems:[MenuItem];
+  subMenuItems:[MenuItem];
   previewImageState:string = "out";
   image2Shown:string = "show";
+  menuItemLeft:string = "0px";
 
   constructor(public menuService: MenuService, public configService: ConfigService) {
     var vm = this;
@@ -58,6 +60,9 @@ export class TopNavigationComponent implements OnInit {
         }
         this.image1 = !this.image1;
         this.previewImageState = "in";
+        this.subMenuItems = menuItem.subMenu;
+        this.menuItemLeft = event.target.offsetLeft + "px";
+        //console.log(event);
       }
     }      
 
