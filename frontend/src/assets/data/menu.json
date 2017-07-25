@@ -23,12 +23,32 @@
         {
             "name": "YouTube",
             "url": "http://youtube.com/soberauer",
-            "image": "YouTube.jpg"
+            "image": "YouTube.jpg",
+            "subMenu": [
+                {
+                    "name": "My Channel",
+                    "url": "http://youtube.com/soberauer"
+                },
+                {
+                    "name": "3D Travel Videos",
+                    "url": "https://www.youtube.com/playlist?list=PLB7C0C73135F83AD9"
+                }
+            ]
         },
         {
-            "name": "Books",
+            "name": "Publications",
             "url": "https://www.amazon.co.uk/Stephen-Oberauer/e/B004B9EGXI",
-            "image": "Books.jpg"
+            "image": "Books.jpg",
+            "subMenu":[
+                {
+                    "name": "Nerd's Guide to World Domination",
+                    "url": "https://www.amazon.co.uk/Mischievous-Nerds-Guide-World-Domination/dp/1453841326"
+                },
+                {
+                    "name": "Anticipating Tomorrow's Politics",
+                    "url": "https://www.amazon.co.uk/Anticipating-tomorrows-politics-Transpolitica-Book-ebook/dp/B00UZ3ELKW"
+                }
+            ]
         },
         {
             "name": "Projects",
