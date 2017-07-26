@@ -13,8 +13,8 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
     trigger('flyInOut', [
       state('in', style({transform: 'translateX(0)'})),
       state('out', style({transform: 'translateX(-100%)'})),
-      transition('out => in', animate("500ms ease-out")),
-      transition('in => out', animate("500ms ease-in"))
+      transition('out => in', animate("500ms ease-in")),
+      transition('in => out', animate("1000ms ease-in"))
     ]),
     trigger('topMargin', [
       state('in', style({marginTop: '2px', opacity:1})),
@@ -26,14 +26,14 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
       state('show', style({opacity:1})),
       state('hide', style({opacity:0})),
       transition('hide => show', animate("500ms ease-in")),
-      transition('show => hide', animate("500ms ease-out"))
+      transition('show => hide', animate("1000ms ease-in"))
     ])    
   ]  
 })
 export class TopNavigationComponent implements OnInit {
 
   handleMouseEnter: (event, menuItem, isSubMenuItem: boolean) => void;
-  handleMouseLeave: (event) => void;
+  handleMouseLeave: () => void;
 
   private image1:boolean = false;
   private menuItem1:boolean = false;
@@ -48,6 +48,7 @@ export class TopNavigationComponent implements OnInit {
   menuItemLeft:string = "0px";
   menuItemLeft2:string = "0px";
   lastMainMenu:MenuItem;
+  currentMenuItem:MenuItem;
 
   constructor(public menuService: MenuService, public configService: ConfigService) {
     var vm = this;
@@ -58,6 +59,7 @@ export class TopNavigationComponent implements OnInit {
       });
 
     this.handleMouseEnter = function(event, menuItem, isSubMenuItem: boolean) {
+      this.currentMenuItem = menuItem;
       if(!isSubMenuItem) {       
         if(this.lastMainMenu === menuItem){
           return;
@@ -98,8 +100,18 @@ export class TopNavigationComponent implements OnInit {
       }     
     }      
 
-    this.handleMouseLeave = function(event) {
-      this.previewImageState = "out";
+    this.handleMouseLeave = function() {
+      this.currentMenuItem = null;
+      setTimeout(() => {
+        if(this.currentMenuItem == null){
+          this.subMenuState = "out";
+          this.subMenuState2 = "out";
+          this.image1Shown = "hide";
+          this.image2Shown = "hide";
+          this.previewImageState = "out";
+          this.lastMainMenu = null;                 
+        }
+      }, 500);      
     }       
   }
 

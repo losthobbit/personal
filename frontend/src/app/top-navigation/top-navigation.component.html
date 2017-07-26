@@ -1,4 +1,4 @@
-<ul class="main-menu"> <!-- (mouseleave)="handleMouseLeave($event)" -->
+<ul class="main-menu" (mouseleave)="handleMouseLeave()">
   <li *ngFor='let menuItem of menuItems'>
     <a (mouseenter)="handleMouseEnter($event, menuItem, false)" href="{{menuItem.url}}" target="_blank"><h1>{{menuItem.name}}</h1></a>    
   </li>
@@ -9,14 +9,14 @@
     <img [@showHide]="image2Shown" class="preview top-left" src="{{previewImage2}}"/>
   </div>
   <div class="top-left" [style.left]="menuItemLeft">
-    <ul class="sub-menu">
+    <ul class="sub-menu" (mouseleave)="handleMouseLeave()">
       <li *ngFor='let menuItem of subMenuItems' [@topMargin]="subMenuState">
         <a (mouseenter)="handleMouseEnter($event, menuItem, true)" href="{{menuItem.url}}" target="_blank"><h2>{{menuItem.name}}</h2></a>    
       </li>
     </ul>    
   </div>
   <div class="top-left" [style.left]="menuItemLeft2">
-    <ul class="sub-menu">
+    <ul class="sub-menu" (mouseleave)="handleMouseLeave()">
       <li *ngFor='let menuItem of subMenuItems2' [@topMargin]="subMenuState2">
         <a (mouseenter)="handleMouseEnter($event, menuItem, true)" href="{{menuItem.url}}" target="_blank"><h2>{{menuItem.name}}</h2></a>    
       </li>
