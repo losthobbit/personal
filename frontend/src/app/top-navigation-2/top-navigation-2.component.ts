@@ -5,9 +5,9 @@ import { MenuItem } from '../menu/menuItem';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 
 @Component({
-  selector: 'app-top-navigation',
-  templateUrl: './top-navigation.component.html',
-  styleUrls: ['./top-navigation.component.scss'],
+  selector: 'app-top-navigation-2',
+  templateUrl: './top-navigation-2.component.html',
+  styleUrls: ['./top-navigation-2.component.scss'],
   providers: [],
   animations: [
     trigger('flyInOut', [
@@ -30,23 +30,25 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
     ])    
   ]  
 })
-export class TopNavigationComponent implements OnInit {
+export class TopNavigation2Component implements OnInit {
 
   handleMouseEnter: (event, menuItem, isSubMenuItem: boolean) => void;
   handleMouseLeave: () => void;
 
   private image1:boolean = false;
-
+  private menuItem1:boolean = false;
+  
   preloadedImages:HTMLImageElement[] = [];
   menuItems:[MenuItem];
   subMenuItems:[MenuItem];
   previewImageState:string = "out";
   subMenuState:string = "out";
-  menuItemLeft:string = "0px";
-  lastMainMenu:MenuItem;
-  leavingMenuItem:boolean = false;
-  currentMenuItem:MenuItem;
+  subMenuState2:string = "out";
   image2Shown:string = "show";
+  menuItemLeft:string = "0px";
+  menuItemLeft2:string = "0px";
+  lastMainMenu:MenuItem;
+  currentMenuItem:MenuItem;
 
   constructor(public menuService: MenuService, public configService: ConfigService) {
     var vm = this;
@@ -58,22 +60,31 @@ export class TopNavigationComponent implements OnInit {
 
     this.handleMouseEnter = function(event, menuItem, isSubMenuItem: boolean) {
       this.currentMenuItem = menuItem;
-      this.leavingMenuItem = false;
-      if (isSubMenuItem) {
-      } else {
-        menuItem.left = event.target.offsetLeft + "px";
-        if(menuItem.image) {
-          if(this.image1) {
-            this.previewImage2 = this.configService.imagesUrl + '/' + menuItem.image;
-            this.image2Shown = "show";
+      if(!isSubMenuItem) {       
+        if(this.lastMainMenu === menuItem){
+          return;
+        }
+        this.lastMainMenu = menuItem;
+        this.menuItem1 = !this.menuItem1;
+        if(this.menuItem1) {
+          this.subMenuItems = menuItem.subMenu;
+          this.menuItemLeft = event.target.offsetLeft + "px";
+        }
+        else {
+          this.subMenuItems2 = menuItem.subMenu;
+          this.menuItemLeft2 = event.target.offsetLeft + "px";
+        }
+        // For some reason I need the timeout for the animation to work properly
+        setTimeout(() => {
+          if(menuItem.subMenu) {
+            this.subMenuState = this.menuItem1 ? "in" : "out";
+            this.subMenuState2 = this.menuItem1 ? "out" : "in";
           }
           else {
-            this.previewImage1 = this.configService.imagesUrl + '/' + menuItem.image;
-            this.image2Shown = "hide";
-          }
-          this.image1 = !this.image1;
-          this.previewImageState = "in";       
-        }         
+            this.subMenuState = "out";
+            this.subMenuState2 = "out";
+          }     
+        }, 1); 
       }
       if(menuItem.image) {
         if(this.image1) {
@@ -86,25 +97,22 @@ export class TopNavigationComponent implements OnInit {
         }
         this.image1 = !this.image1;
         this.previewImageState = "in";       
-      }         
+      }     
     }      
 
     this.handleMouseLeave = function() {
-      this.leavingMenuItem = true;
+      this.currentMenuItem = null;
       setTimeout(() => {
-        if(this.leavingMenuItem){
-          this.currentMenuItem = null;
-          this.pendingMenuItem = false;
+        if(this.currentMenuItem == null){
+          this.subMenuState = "out";
+          this.subMenuState2 = "out";
           this.image1Shown = "hide";
           this.image2Shown = "hide";
           this.previewImageState = "out";
+          this.lastMainMenu = null;                 
         }
-      }, 500);     
+      }, 500);      
     }       
-  }
-
-  getSubMenuState(menuItem): string {
-    return menuItem == this.currentMenuItem ? "in" : "out";
   }
 
   preloadMenuImages(data){

@@ -11,13 +11,15 @@ import { TopNavigationComponent } from './top-navigation/top-navigation.componen
 
 import { MenuService } from './menu/menu.service';
 import { ConfigService } from './config.service';
+import { TopNavigation2Component } from './top-navigation-2/top-navigation-2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    TopNavigationComponent
+    TopNavigationComponent,
+    TopNavigation2Component
   ],
   imports: [
     AlertModule.forRoot(),

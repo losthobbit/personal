@@ -3,4 +3,5 @@ export class MenuItem {
     url: string;
     image: string;
     subMenu: [MenuItem];
+    left: string;
 }

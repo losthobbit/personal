@@ -60,6 +60,21 @@
                     "url": "https://transpolitica.org/2015/04/02/democratic-intelligence/"                    
                 }
             ]
+        },
+        {
+            "name": "Tech Lead / Senior Developer",
+            "url": "https://www.linkedin.com/in/stephenoberauer",
+            "image": "LinkedIn.jpg",
+            "subMenu": [
+                {
+                    "name": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/stephenoberauer"                    
+                },
+                {
+                    "name": "Stack Overflow",
+                    "url": "https://stackoverflow.com/users/394157/stephen-oberauer"                    
+                }
+            ]
         }
     ]
 }

@@ -8,18 +8,13 @@
     <img class="preview" src="{{previewImage1}}"/>
     <img [@showHide]="image2Shown" class="preview top-left" src="{{previewImage2}}"/>
   </div>
-  <div class="top-left" [style.left]="menuItemLeft">
-    <ul class="sub-menu" (mouseleave)="handleMouseLeave()">
-      <li *ngFor='let menuItem of subMenuItems' [@topMargin]="subMenuState">
-        <a (mouseenter)="handleMouseEnter($event, menuItem, true)" href="{{menuItem.url}}" target="_blank"><h2>{{menuItem.name}}</h2></a>    
-      </li>
-    </ul>    
-  </div>
-  <div class="top-left" [style.left]="menuItemLeft2">
-    <ul class="sub-menu" (mouseleave)="handleMouseLeave()">
-      <li *ngFor='let menuItem of subMenuItems2' [@topMargin]="subMenuState2">
-        <a (mouseenter)="handleMouseEnter($event, menuItem, true)" href="{{menuItem.url}}" target="_blank"><h2>{{menuItem.name}}</h2></a>    
-      </li>
-    </ul>    
-  </div>
+  <ng-container *ngFor="let menuItem of menuItems">
+    <div class="top-left" [style.left]="menuItem.left">
+      <ul class="sub-menu" (mouseleave)="handleMouseLeave()">
+        <li *ngFor='let subMenuItem of menuItem.subMenu' [@topMargin]="getSubMenuState(menuItem)">
+          <a (mouseenter)="handleMouseEnter($event, menuItem, true)" href="{{subMenuItem.url}}" target="_blank"><h2>{{subMenuItem.name}}</h2></a>    
+        </li>
+      </ul>    
+    </div>
+  </ng-container>
 </div>
