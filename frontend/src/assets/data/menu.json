@@ -52,12 +52,12 @@
         },
         {
             "name": "Projects",
-            "url": "https://democraticintelligence.org",
+            "url": "https://transpolitica.org/2015/04/02/democratic-intelligence/",
             "image": "DemocraticIntelligence.jpg",
             "subMenu": [
                 {
                     "name": "Democratic Intelligence",
-                    "url": "https://democraticintelligence.org"                    
+                    "url": "https://transpolitica.org/2015/04/02/democratic-intelligence/"                    
                 }
             ]
         }
